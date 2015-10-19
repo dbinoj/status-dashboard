@@ -1,0 +1,15 @@
+You have entered the following options:
+
+            - SSD Source            : /opt/statusdashboard/SSD-REL-2.1
+            - Local Directory       : /opt/statusdashboard
+            - Apache Conf Directory : /etc/httpd/conf.d
+            - Database Username     : ctc_status
+            - Database Password     : ********
+            - Database Host         : localhost
+            - Database Port         : 3306
+            - DJango Admin Location : /opt/statusdashboard/venv/lib/python2.7/site-packages/django/contrib/admin/static/admin
+            - Apache UID            : 48
+            - Path to mod_wsgi.so   : /usr/lib64/httpd/modules
+            - Screenshot Directory  : /opt/statusdashboard/ssd-localstorage
+
+         
