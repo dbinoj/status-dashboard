@@ -1,5 +1,10 @@
+amqp==1.4.7
+anyjson==0.3.3
+billiard==3.3.0.20
+celery==3.1.18
 Django==1.8.5
 django-auth-ldap==1.2.7
+kombu==3.0.28
 MySQL-python==1.2.5
 PIL==1.1.7
 python-ldap==2.4.21
