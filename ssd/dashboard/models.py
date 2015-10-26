@@ -39,6 +39,9 @@ class Service(models.Model):
 
     service_name = models.CharField(blank=False, max_length=50, unique=True)
 
+    def __str__(self):
+        return self.service_name
+
 
 class Email(models.Model):
     """Email addresses that will be used for alerting"""
@@ -215,7 +218,7 @@ class Config_Ireport(models.Model):
     submit_message = models.CharField(blank=False, max_length=100)
     upload_enabled = models.BooleanField(blank=False)
     upload_path = models.CharField(null=False, blank=True, max_length=100)
-    file_size = models.IntegerField(blank=False, max_length=5)
+    file_size = models.IntegerField(blank=False)
 
 
 class Ireport(models.Model):

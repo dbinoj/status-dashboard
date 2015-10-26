@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Service_Monitor
+
+class Service_MonitorAdmin(admin.ModelAdmin):
+	pass
+admin.site.register(Service_Monitor, Service_MonitorAdmin)
