@@ -45,7 +45,7 @@ def stethoscope(sm_id):
     try:
         service_inspector = getattr(inspector, sm.test_type)
     except AttributeError:
-        raise Exception('Service Inspector for %s not implemented.')
+        raise Exception('Service Inspector %s for %s not implemented.' % (sm.test_type, sm.name))
     else:
         service = service_inspector(sm.url)
 
