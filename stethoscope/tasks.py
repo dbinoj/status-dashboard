@@ -38,6 +38,13 @@ class Listen_For_Heartbeat(Task):
 
             url_o = service.get_url_object()
 
+            today = datetime.datetime.now().date()
+            tomorrow = today + datetime.timedelta(1)
+            today_start = datetime.datetime.combine(today, datetime.time())
+            today_end = datetime.datetime.combine(tomorrow, datetime.time())
+            time_now = datetime.datetime.now()
+            time_now = pytz.timezone(settings.TIME_ZONE).localize(time_now)
+
             # Fetch open incidents for current service created by us at each iteration. To stay consistent.
             # We select the issues based on the pattern in which we crete the description.
             open_incidents = Event.objects.filter(
@@ -50,12 +57,11 @@ class Listen_For_Heartbeat(Task):
             incidents_started_today_closed = Event.objects.filter(
                     Q(status__status='closed') & 
                     Q(type__type='incident') & 
-                    Q(start__startswith=datetime.date.today()) & 
+                    Q(start__lte=today_end) & 
+                    Q(start__gte=today_start) & 
                     Q(description__startswith='%s [%s] -- ' % (sm.name, url_o.scheme))
             ).order_by('-end').values('id','description')
 
-            time_now = datetime.datetime.now()
-            time_now = pytz.timezone(settings.TIME_ZONE).localize(time_now)
             # User under whose name updates should be made.
             try:
                 user = User.objects.get(username='netadmin')
