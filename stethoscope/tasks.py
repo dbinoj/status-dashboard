@@ -12,6 +12,7 @@ import pytz
 from django.conf import settings
 from django.core.cache import cache
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 from django.db.models import Q
 from ssd.dashboard.models import Event, Event_Update, Service, Config_Message, Type, Status, Event_Service
@@ -38,10 +39,12 @@ class Listen_For_Heartbeat(Task):
 
             url_o = service.get_url_object()
 
-            today = datetime.datetime.now().date()
+            today = timezone.now().date()
             tomorrow = today + datetime.timedelta(1)
             today_start = datetime.datetime.combine(today, datetime.time())
+            today_start = pytz.timezone(settings.TIME_ZONE).localize(today_start)
             today_end = datetime.datetime.combine(tomorrow, datetime.time())
+            today_end = pytz.timezone(settings.TIME_ZONE).localize(today_end)
             time_now = datetime.datetime.now()
             time_now = pytz.timezone(settings.TIME_ZONE).localize(time_now)
 
