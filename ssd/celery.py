@@ -19,7 +19,7 @@ app.config_from_object('django.conf:settings')
 app.conf.update(
     CELERYBEAT_SCHEDULE = {
         'check-services-for-heartbeat': {
-            'task': 'stethoscope.tasks.Listen_For_Heartbeat',
+            'task': 'stethoscope.tasks.spawn_stethoscopes',
             'schedule': timedelta(seconds=60),
         },
     }
