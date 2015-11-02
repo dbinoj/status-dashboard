@@ -95,10 +95,10 @@ def stethoscope(sm_id):
     """ Decision matrix on how to proceed.
     We want only one active issue for a service monitor.
 
-    OUTCOME                     | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
-    SERVICE_UP                  | Y | Y | Y | Y | N | N | N | N |
-    HAS_OPEN_ISSUES             | N | Y | N | Y | N | Y | N | Y |
-    HAS_ISSUES_WERE_CLOSED_TODAY| N | N | Y | Y | N | N | Y | Y |
+    OUTCOME                      | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+    SERVICE_UP                   | Y | Y | Y | Y | N | N | N | N |
+    HAS_OPEN_ISSUES              | N | Y | N | Y | N | Y | N | Y |
+    HAS_ISSUES_WHICH_CLOSED_TODAY| N | N | Y | Y | N | N | Y | Y |
     DECISIONS:
     1. Do nothin and skip current iteration (continue)
     2. Close all open issues and skip current iteration
