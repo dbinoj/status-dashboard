@@ -100,14 +100,14 @@ def stethoscope(sm_id):
     HAS_OPEN_ISSUES              | N | Y | N | Y | N | Y | N | Y |
     HAS_ISSUES_WHICH_CLOSED_TODAY| N | N | Y | Y | N | N | Y | Y |
     DECISIONS:
-    1. Do nothin and skip current iteration (continue)
-    2. Close all open issues and skip current iteration
-    3. Do nothin and skip current iteration
-    4. Close all open issues and skip current iteration
-    5. Open new issue and skip current iteration
-    6. Close all but latest issue (if multiple issues open) and skip current iteration
-    7. Reopen last closed issue, update error message and skip current iteration
-    8. Close all but latest issue (if multiple issues open), update last open issue with error message and skip current iteration
+    1. Do nothing
+    2. Close all open issues
+    3. Do nothing
+    4. Close all open issues
+    5. Open new issue
+    6. Close all but latest issue (if multiple issues open)
+    7. Reopen last closed issue, update error message
+    8. Close all but latest issue (if multiple issues open), update last open issue with error message
     """
     if service.is_up() and open_issue is None and closed_issue is None:
         # Case 1
