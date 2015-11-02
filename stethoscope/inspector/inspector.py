@@ -33,6 +33,12 @@ class ServiceInspector(object):
     def is_up(self):
         return self._service_up
 
+    def status(self):
+        if self._service_up:
+            return 'UP'
+        else:
+            return 'DOWN'
+
     def get_url_object(self):
         return self.url_o
 

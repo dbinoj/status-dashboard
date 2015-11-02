@@ -213,3 +213,4 @@ def stethoscope(sm_id):
                 update='%s [%s] -- %s' % (sm.name, url_o.scheme, service.error_msg()),
                 user_id=user.id
         ).save()
+    return service.status()
