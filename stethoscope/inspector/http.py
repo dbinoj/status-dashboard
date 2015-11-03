@@ -24,14 +24,15 @@ class HTTP(ServiceInspector):
 
     def inspect(self):
         error_desc = None
+        timeout = 12
         try:
-            r = requests.get(self.url, verify=True, timeout=5)
+            r = requests.get(self.url, verify=True, timeout=timeout)
             if r.status_code / 100 != 2:
                 error_desc = 'Website not returning %s 2xx Success status code. Got %s' % (self.url_o.scheme, r.status_code)
         except requests.exceptions.SSLError as e:
             error_desc = 'Unable to validate SSL certificate.'
         except requests.exceptions.Timeout as e:
-            error_desc = 'Service timed out when trying to access it over %s. Website must load in 5 seconds for optimal user experience.' % (self.url_o.scheme)
+            error_desc = 'Service timed out when trying to access it over %s. Website must load in %s seconds for optimal user experience.' % (self.url_o.scheme, timeout)
         except requests.exceptions.ConnectionError as e:
             error_desc = 'Unable to establish a %s connection with the service.' % (self.url_o.scheme)
 
